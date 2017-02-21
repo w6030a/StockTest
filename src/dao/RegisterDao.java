@@ -1,5 +1,7 @@
-package com.javatpoint;
+package dao;
 import java.sql.*;
+
+import com.javatpoint.RegisterAction;
 
 public class RegisterDao {
 

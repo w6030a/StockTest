@@ -2,6 +2,8 @@ package com.javatpoint;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dao.RegisterDao;
+
 public class RegisterAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +35,7 @@ public class RegisterAction extends ActionSupport {
 	}
 
 	public String execute() {
+		// save password into DB salted with reg time
 		int i = RegisterDao.save(this);
 		if (i > 0) {
 			return "success";

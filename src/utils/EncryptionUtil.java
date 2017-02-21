@@ -3,16 +3,15 @@ package utils;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 
-public class PasswordEncryptUtil {
+public class EncryptionUtil {
 
 	static public final String HASH_TYPE_MD5 = "MD5";
 	static public final String HASH_TYPE_SHA256 = "SHA-256";
 	
-	static public String encrypt(String password, Date registerTime) {
-		// sha(md5(registerTime + pw))
-		return hash(HASH_TYPE_SHA256, hash(HASH_TYPE_MD5, registerTime.toString() + password));
+	static public String SaltedEncrypt(String password, String salt) {
+		// sha(md5(salt + pw))
+		return hash(HASH_TYPE_SHA256, hash(HASH_TYPE_MD5, salt + password));
 	}
 	
 	private static String hash(String hashType, String base) {
