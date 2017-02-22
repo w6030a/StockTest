@@ -11,22 +11,18 @@ import biz.User;
 
 public class DbService {
 	
-	public void addUser(User user) {
+	public void addUser(User user) throws SQLException {
 		Connection conn = DbConnection.getConnection();
 		PreparedStatement ps = null;
 		String sql = "insert into User(name, password, email, regtime) values(?, ?, ?, ?)";
 		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
 		
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, user.getName());
-			ps.setString(2, EncryptionUtil.SaltedEncrypt(user.getPassword(), timeStamp.toString()));
-			ps.setString(3, user.getEmail());
-			ps.setString(4, timeStamp.toString());
-			ps.executeUpdate();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, user.getUserName());
+		ps.setString(2, EncryptionUtil.SaltedEncrypt(user.getPassword(), timeStamp.toString()));
+		ps.setString(3, user.getEmail());
+		ps.setString(4, timeStamp.toString());
+		ps.executeUpdate();
 	}
 	
 	public User getUser(String userName, String password) {
@@ -57,7 +53,21 @@ public class DbService {
 	}
 	
 	public boolean hasSameName(String userName) {
-		//TODO:
-		return false;
+		Connection conn = DbConnection.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from  User where name= ?";
+		boolean dbAlreadyHasThatUserName = false;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, userName);
+			rs = ps.executeQuery();
+			dbAlreadyHasThatUserName = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dbAlreadyHasThatUserName;
 	}
 }

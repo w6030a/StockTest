@@ -1,21 +1,24 @@
 package com.javatpoint;
 
+import java.sql.SQLException;
+
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.RegisterDao;
+import biz.User;
+import dao.DbService;
 
 public class RegisterAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String name, password, email;
+	private String userName, password, email;
 
 	public String getName() {
-		return name;
+		return userName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.userName = name;
 	}
 
 	public String getPassword() {
@@ -35,11 +38,19 @@ public class RegisterAction extends ActionSupport {
 	}
 
 	public String execute() {
-		// save password into DB salted with reg time
-		int i = RegisterDao.save(this);
-		if (i > 0) {
-			return "success";
+		DbService dbService = new DbService();
+		
+		if(dbService.hasSameName(userName)) {
+			return INPUT;
 		}
-		return "error";
+		
+		try {
+			dbService.addUser(new User(userName, password, email));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+		return SUCCESS;
 	}
 }
