@@ -13,12 +13,12 @@ public class RegisterAction extends ActionSupport {
 	
 	private String userName, password, email;
 
-	public String getName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setName(String name) {
-		this.userName = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -38,11 +38,16 @@ public class RegisterAction extends ActionSupport {
 	}
 
 	public String execute() {
+		if(userName == null)
+			return NONE;
+		
 		DbService dbService = new DbService();
 		
 		if(dbService.hasSameName(userName)) {
 			return INPUT;
 		}
+		
+		System.out.println("No user name collision");
 		
 		try {
 			dbService.addUser(new User(userName, password, email));

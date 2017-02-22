@@ -18,6 +18,7 @@
 
 <action name="register" class="com.javatpoint.RegisterAction">
 <result name="input">register.jsp</result>
+<result name="none">register.jsp</result>
 <result name="success">success.jsp</result>
 <result name="error">fail.jsp</result>
 </action>

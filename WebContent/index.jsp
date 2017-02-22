@@ -16,7 +16,7 @@
 	</div>
 	
 	<div align="center">
-		<s:form action="login">
+		<s:form action="loginAction">
 			<s:textfield name="userName" label="Name"></s:textfield>
 			<s:password name="password" label="Password"></s:password>
 			<s:textfield name="email" label="Email"></s:textfield>

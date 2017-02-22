@@ -10,7 +10,7 @@ import utils.IOUtil;
 
 public class DbConnection {
 
-	private static final String URL = "jdbc:postgresql://localhost/";
+	private static final String URL = "jdbc:postgresql://localhost:5432/";
 	private static final String DB_NAME = "stocktestdb";
 	private static final String USER_NAME = "postgres";
 	private static final String PASSWORD = "abcd"; // is it right?

@@ -10,7 +10,7 @@
 <body>
 	<hr />
 	<div align="right">
-		<a href="login">register</a>|
+		<a href="login">login</a>|
 		<a href="logout">logout</a>|
 		<a href="profile">profile</a>
 	</div>
