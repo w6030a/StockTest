@@ -10,7 +10,6 @@
 <body>
 	<div align="right">
 		<a href="login">log in</a>|
-		<a href="logout">log out</a>|
 		<a href="profile">profile</a>
 	</div>
 	<hr />

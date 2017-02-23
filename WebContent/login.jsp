@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div align="right">
-		<a href="logout">log out</a>|
 		<a href="register">register</a>|
 		<a href="profile">profile</a>
 	</div>
