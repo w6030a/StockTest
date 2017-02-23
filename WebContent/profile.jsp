@@ -7,13 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="right">
-		<a href="profile">profile</a>
-	</div>
-	<hr />
-	
-	<div align="center">
-		Action Fail
-	</div>
+	Show user info here or if not logged in, redirect to login
+	how do i get info in the session?
 </body>
 </html>

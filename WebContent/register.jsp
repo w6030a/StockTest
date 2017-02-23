@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<hr />
 	<div align="right">
-		<a href="login">login</a>|
-		<a href="logout">logout</a>|
+		<a href="login">log in</a>|
+		<a href="logout">log out</a>|
 		<a href="profile">profile</a>
 	</div>
+	<hr />
 
 	<div align="center">
 		<s:form action="register">

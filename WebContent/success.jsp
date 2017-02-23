@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Action Succeed
+	<div align="right">
+		<a href="profile">profile</a>
+	</div>
+	<hr />
+	
+	<div align="center">
+		Action Succeed
+	</div>
 </body>
 </html>

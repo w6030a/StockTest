@@ -37,17 +37,16 @@ public class RegisterAction extends ActionSupport {
 		this.email = email;
 	}
 
-	public String execute() {
-		if(userName == null)
+	public String register() {
+		if(userName == null || password == null || email == null) {
 			return NONE;
+		}
 		
 		DbService dbService = new DbService();
 		
 		if(dbService.hasSameName(userName)) {
 			return INPUT;
 		}
-		
-		System.out.println("No user name collision");
 		
 		try {
 			dbService.addUser(new User(userName, password, email));

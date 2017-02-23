@@ -6,26 +6,28 @@
 
 <package name="default" extends="struts-default">
 
-<action name="login" class="com.javatpoint.LoginAction" method="login">  
+<action name="login" class="com.javatpoint.LoginAction" method="login">
+<result name="none">login.jsp</result>
+<result name="input">login.jsp</result>
 <result name="success">success.jsp</result>
 <result name="error">fail.jsp</result>
 </action>
 
-<action name="logout" class="com.javatpoint.LoginAction" method="logout">  
+<action name="logout" class="com.javatpoint.LogoutAction">  
 <result name="success">success.jsp</result>
 <result name="error">fail.jsp</result>
 </action>
 
-<action name="register" class="com.javatpoint.RegisterAction">
-<result name="input">register.jsp</result>
+<action name="register" class="com.javatpoint.RegisterAction" method="register">
 <result name="none">register.jsp</result>
+<result name="input">register.jsp</result>
 <result name="success">success.jsp</result>
 <result name="error">fail.jsp</result>
 </action>
 
-<action name="profile" class="">
-<result name="success">success.jsp</result>
-<result name="error">fail.jsp</result>
+<action name="profile" class="com.javatpoint.ProfileAction">
+<result name="success">profile.jsp</result>
+<result name="error" type="redirectAction">login</result>
 </action>
 
 </package>

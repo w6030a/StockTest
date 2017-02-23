@@ -4,17 +4,23 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 	<div align="right">
-		<a href="login">log in</a>|
 		<a href="logout">log out</a>|
 		<a href="register">register</a>|
 		<a href="profile">profile</a>
 	</div>
 	<hr />
-	<img src="/WebContent/Image/index_page_img.jpg"></img>
+	
+	<div align="center">
+		<s:form action="login">
+			<s:textfield name="userName" label="Name"></s:textfield>
+			<s:password name="password" label="Password"></s:password>
+			<s:submit value="Login"></s:submit>
+		</s:form>
+	</div>
 </body>
 </html>

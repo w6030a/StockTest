@@ -6,14 +6,13 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import biz.User;
-import dao.DbConnection;
 import dao.DbService;
 
 public class LoginAction extends ActionSupport {
 
 	private static final long serialVersionUID = 2L;
 
-	private String userName, password, email;
+	private String userName, password;
 
 	public String getUserName() {
 		return userName;
@@ -21,14 +20,6 @@ public class LoginAction extends ActionSupport {
 
 	public void setUserName(String name) {
 		this.userName = name;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -40,6 +31,10 @@ public class LoginAction extends ActionSupport {
 	}
 	
 	public String login() {
+		if(userName == null || password == null) {
+			return NONE;
+		}
+		
 		DbService dbService = new DbService();
 		User user = dbService.getUser(userName, password);
 		
@@ -52,15 +47,5 @@ public class LoginAction extends ActionSupport {
 		Map<String, Object> session = actionContext.getSession();
 		session.put("userName", user.getUserName());
 		return SUCCESS;
-	}
-	
-	public String logout() {
-		// test
-		if(DbConnection.getConnection() != null) {
-			System.out.print("Log out Success");
-			return SUCCESS;
-		}
-		
-		return ERROR;
 	}
 }

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import utils.EncryptionUtil;
 import biz.User;
@@ -17,8 +16,6 @@ public class DbService {
 		String sql = "insert into stocktest.users(username, password, email, regtime) values(?, ?, ?, ?)";
 		String timeStamp = String.valueOf(System.currentTimeMillis());
 		 
-		System.out.println(sql);
-		
 		ps = conn.prepareStatement(sql);
 		ps.setString(1, user.getUserName());
 		ps.setString(2, EncryptionUtil.SaltedEncrypt(user.getPassword(), timeStamp));
@@ -42,7 +39,7 @@ public class DbService {
 			if(rs.next()) {
 				String registerTime = rs.getString("regtime");
 				if(rs.getString("password").equals(EncryptionUtil.SaltedEncrypt(password, registerTime))) {
-					user = new User(rs.getString("name"), rs.getString("password"), rs.getString("email"));
+					user = new User(rs.getString("username"), rs.getString("password"), rs.getString("email"));
 				}
 			}
 		} catch(SQLException e) {
