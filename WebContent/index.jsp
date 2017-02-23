@@ -15,6 +15,5 @@
 		<a href="profile">profile</a>
 	</div>
 	<hr />
-	<img src="/WebContent/Image/index_page_img.jpg"></img>
 </body>
 </html>
