@@ -15,5 +15,8 @@
 		<a href="profile">profile</a>
 	</div>
 	<hr />
+	<div align="center">
+		<img src="<s:url value="/images/indexPageImg.jpg"/>" />
+	</div>
 </body>
 </html>
