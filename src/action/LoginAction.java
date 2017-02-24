@@ -1,4 +1,4 @@
-package com.javatpoint;
+package action;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class LoginAction extends ActionSupport {
 
 	private static final long serialVersionUID = 2L;
 
-	private String userName, password;
+	private String userName, password, confirmPassword;
 
 	public String getUserName() {
 		return userName;
@@ -28,6 +28,29 @@ public class LoginAction extends ActionSupport {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	
+	public void validate() {
+		if("".equals(userName)) {
+			addFieldError("userName", getText("username.required"));
+		}
+		if("".equals(password)) {
+			addFieldError("password", getText("password.required"));
+		}
+		if("".equals(confirmPassword)) {
+			addFieldError("confirmPassword", getText("cpassword.required"));
+		}
+		if(confirmPassword != null && !confirmPassword.equals(password)) {
+			addFieldError("confirmPassword", getText("cpassword.notmatch"));
+		}
 	}
 	
 	public String login() {
@@ -48,4 +71,5 @@ public class LoginAction extends ActionSupport {
 		session.put("userName", user.getUserName());
 		return SUCCESS;
 	}
+
 }

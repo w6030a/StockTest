@@ -18,6 +18,7 @@
 		<s:form action="login">
 			<s:textfield name="userName" label="Name"></s:textfield>
 			<s:password name="password" label="Password"></s:password>
+			<s:password name="confirmPassword" label="Confirm Password"></s:password>
 			<s:submit value="Login"></s:submit>
 		</s:form>
 	</div>

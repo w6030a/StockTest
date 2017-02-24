@@ -1,4 +1,4 @@
-package com.javatpoint;
+package action;
 
 import org.apache.struts2.dispatcher.SessionMap;
 

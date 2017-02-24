@@ -4,31 +4,37 @@
    "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 
-<package name="default" extends="struts-default">
+	<constant name="struts.custom.i18n.resources" value="global"></constant>
 
-<action name="login" class="com.javatpoint.LoginAction" method="login">
-<result name="none">login.jsp</result>
-<result name="input">login.jsp</result>
-<result name="success">success.jsp</result>
-<result name="error">fail.jsp</result>
-</action>
+	<package name="default" extends="struts-default">
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+		
+		<action name="login" class="action.LoginAction" method="login">
+			<result name="none">login.jsp</result>
+			<result name="input">login.jsp</result>
+			<result name="success">success.jsp</result>
+			<result name="error">fail.jsp</result>
+		</action>
 
-<action name="logout" class="com.javatpoint.LogoutAction">  
-<result name="success">login.jsp</result>
-<result name="error">fail.jsp</result>
-</action>
+		<action name="logout" class="action.LogoutAction">
+			<result name="success">login.jsp</result>
+			<result name="error">fail.jsp</result>
+		</action>
 
-<action name="register" class="com.javatpoint.RegisterAction" method="register">
-<result name="none">register.jsp</result>
-<result name="input">register.jsp</result>
-<result name="success">success.jsp</result>
-<result name="error">fail.jsp</result>
-</action>
+		<action name="register" class="action.RegisterAction"
+			method="register">
+			<result name="none">register.jsp</result>
+			<result name="input">register.jsp</result>
+			<result name="success">success.jsp</result>
+			<result name="error">fail.jsp</result>
+		</action>
 
-<action name="profile" class="com.javatpoint.ProfileAction">
-<result name="success">profile.jsp</result>
-<result name="error" type="redirectAction">login</result>
-</action>
+		<action name="profile" class="action.ProfileAction">
+			<result name="success">profile.jsp</result>
+			<result name="error" type="redirectAction">login</result>
+		</action>
 
-</package>
+	</package>
 </struts>    

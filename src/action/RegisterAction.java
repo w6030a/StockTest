@@ -1,6 +1,8 @@
-package com.javatpoint;
+package action;
 
 import java.sql.SQLException;
+
+import org.apache.commons.validator.routines.EmailValidator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -37,6 +39,21 @@ public class RegisterAction extends ActionSupport {
 		this.email = email;
 	}
 
+	public void validate() {
+		if("".equals(userName)) {
+			addFieldError("userName", getText("username.required"));
+		}
+		if("".equals(password)) {
+			addFieldError("password", getText("password.required"));
+		}
+		if("".equals(email)) {
+			addFieldError("email", getText("email.required"));
+		}
+		if(email != null && !EmailValidator.getInstance().isValid(email)) {
+			addFieldError("email", getText("email.invalid"));;
+		}
+	}
+	
 	public String register() {
 		if(userName == null || password == null || email == null) {
 			return NONE;
